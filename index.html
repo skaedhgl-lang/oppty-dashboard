@@ -31,9 +31,14 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:6px}
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px}
 .empty{color:var(--muted);padding:20px;text-align:center}
 .small{font-size:13px;color:var(--muted)}
-</style><script>(function(){var want="DASHBOARD_PASSCODE=6746";if(!want)return;try{if(localStorage.getItem('gate')===want)return;}catch(e){}
-var got=prompt('암호를 입력하세요');if(got!==want){document.documentElement.innerHTML='<p style="font-family:sans-serif;padding:40px">암호가 틀렸습니다. 새로고침 후 다시 시도하세요.</p>';throw new Error('gate');}
-try{localStorage.setItem('gate',want)}catch(e){}})();</script></head><body>
+</style><style>html.locked body>*:not(#gate){display:none!important}#gate{display:none}html.locked #gate{display:flex}</style><script>(function(){var want="DASHBOARD_PASSCODE=6746";window.gateCheck=function(e){e.preventDefault();var v=document.getElementById('gateIn').value.trim();
+if(v===want){try{localStorage.setItem('gate',want)}catch(x){}document.documentElement.classList.remove('locked');}else{document.getElementById('gateMsg').textContent='암호가 틀렸습니다';}return false;};
+if(!want)return;try{if(localStorage.getItem('gate')===want)return;}catch(e){}document.documentElement.classList.add('locked');})();</script></head><body><div id="gate" style="position:fixed;inset:0;align-items:center;justify-content:center;background:#f6f7fb;z-index:9999">
+<form onsubmit="return gateCheck(event)" style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:28px 24px;width:min(90vw,320px);text-align:center;font-family:sans-serif">
+<div style="font-size:18px;font-weight:700;margin-bottom:12px">기회 스캔 대시보드</div>
+<input id="gateIn" type="password" inputmode="numeric" placeholder="암호" autocomplete="off" style="width:100%%;font-size:20px;padding:10px;border:1px solid #d1d5db;border-radius:8px;text-align:center;letter-spacing:6px">
+<button type="submit" style="margin-top:12px;width:100%%;padding:11px;border:0;border-radius:8px;background:#2563eb;color:#fff;font-size:16px">열기</button>
+<div id="gateMsg" style="color:#dc2626;font-size:13px;margin-top:8px;min-height:18px"></div></form></div>
 <header>
 <h1>기회 스캔 대시보드 <span class="sub" id="date"></span></h1>
 <div class="sub">총 13점 만점 · 상 10점 이상 · 중 7~9점. 링크를 누르면 공고로 이동. 매주 월요일 자동 갱신.</div>
