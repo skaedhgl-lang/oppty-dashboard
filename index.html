@@ -4,6 +4,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="기회스캔"><meta name="theme-color" content="#2563eb">
 <link rel="apple-touch-icon" href="icon.svg"><meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
 <title>기회 스캔 대시보드</title>
 <style>
 :root{--bg:#f6f7fb;--card:#fff;--text:#1f2430;--muted:#6b7280;--line:#e5e7eb;--top:#2563eb;--mid:#059669;--low:#9ca3af;--warn:#dc2626;--chip:#eef2ff}
@@ -31,7 +32,14 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:6px}
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px}
 .empty{color:var(--muted);padding:20px;text-align:center}
 .small{font-size:13px;color:var(--muted)}
-</style></head><body>
+</style><script>(function(){var BUILD="20261103221205";
+function bar(txt){var el=document.getElementById('upbar');if(!el){el=document.createElement('div');el.id='upbar';el.style.cssText='font:12px sans-serif;color:#6b7280;padding:6px 16px;display:flex;gap:10px;align-items:center;max-width:1100px;margin:0 auto';document.body.insertBefore(el,document.body.firstChild);}
+ el.innerHTML='<span>'+txt+'</span><button onclick="location.replace(location.pathname+\'?r=\'+Date.now())" style="padding:4px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;cursor:pointer">새로고침</button>';}
+function check(){fetch('version.json?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(v){
+ if(v.build&&v.build!==BUILD){bar('새 보고서가 있어 다시 불러옵니다…');setTimeout(function(){location.replace(location.pathname+'?v='+v.build)},600);}
+ else{bar('갱신 '+(v.built||''))}}).catch(function(){bar('갱신 확인 실패(오프라인)')});}
+window.addEventListener('load',check);document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
+})();</script></head><body>
 <header>
 <h1>기회 스캔 대시보드 <span class="sub" id="date"></span></h1>
 <div class="sub">총 13점 만점 · 상 10점 이상 · 중 7~9점. 링크를 누르면 공고로 이동. 매주 월요일 자동 갱신.</div>
