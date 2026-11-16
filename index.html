@@ -32,7 +32,7 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:6px}
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px}
 .empty{color:var(--muted);padding:20px;text-align:center}
 .small{font-size:13px;color:var(--muted)}
-</style><script>(function(){var BUILD="20261116083129";
+</style><script>(function(){var BUILD="20261116210519";
 function bar(txt){var el=document.getElementById('upbar');if(!el){el=document.createElement('div');el.id='upbar';el.style.cssText='font:12px sans-serif;color:#6b7280;padding:6px 16px;display:flex;gap:10px;align-items:center;max-width:1100px;margin:0 auto';document.body.insertBefore(el,document.body.firstChild);}
  el.innerHTML='<span>'+txt+'</span><button onclick="location.replace(location.pathname+\'?r=\'+Date.now())" style="padding:4px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;cursor:pointer">새로고침</button>';}
 function check(){fetch('version.json?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(v){
@@ -960,7 +960,11 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "updated": "2026-11-15",
    "memo": "서류 통과. 면접 안내 받음 (시간·장소는 안내문 확인)",
    "event": "2026-11-30",
-   "event_label": "면접"
+   "event_label": "면접",
+   "deadline_time": null,
+   "event_time": null,
+   "event_note": "11/30(월) · 시각 미확인 — 안내문 확인",
+   "event_d": "D-14"
   },
   {
    "id": 2,
@@ -973,7 +977,9 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "folder": "applications/2026-11-02_인사혁신처_공무원연금운영위원회_청년위원_공개모집_공고",
    "created": "2026-11-02",
    "updated": "2026-11-02",
-   "memo": "연금·재정 전공자 대상, 분야 불일치"
+   "memo": "연금·재정 전공자 대상, 분야 불일치",
+   "deadline_time": null,
+   "event_time": null
   },
   {
    "id": 3,
@@ -982,13 +988,15 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "category": "채용",
    "url": "https://recruit.navercorp.com/rcrt/view.do?annoId=30005624",
    "deadline": "2026-11-10",
-   "status": "결과대기",
+   "status": "포기",
    "folder": "applications/2026-11-03_NAVER_특허담당변리사_IT분야",
    "created": "2026-11-03",
-   "updated": "2026-11-15",
-   "memo": "지원 완료. 기업문화 적합도 검사 안내 받음 (응시 기간 11/13~11/16, 서류 결과 11/20 이내)",
+   "updated": "2026-11-16",
+   "memo": "기업문화 적합도 검사 미응시로 종료 (응시 마감이 11/16 오전 10:00였는데 '11/16까지'로만 기록해 놓침)",
    "event": "2026-11-16",
-   "event_label": "기업문화 적합도 검사 응시 마감"
+   "event_label": "기업문화 적합도 검사 응시 마감",
+   "deadline_time": null,
+   "event_time": "10:00"
   },
   {
    "id": 4,
@@ -1003,7 +1011,9 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "updated": "2026-11-15",
    "memo": "지원 완료, 결과 대기",
    "event": null,
-   "event_label": ""
+   "event_label": "",
+   "deadline_time": "18:00",
+   "event_time": null
   },
   {
    "id": 5,
@@ -1018,7 +1028,11 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "updated": "2026-11-15",
    "memo": "신청서(hwp)·동의서 작성 → 청년인재DB 프로필 자기소개란에 첨부 → 신청. 작성내용은 폴더의 신청서_작성내용.md",
    "event": null,
-   "event_label": ""
+   "event_label": "",
+   "deadline_time": "18:00",
+   "event_time": null,
+   "due_note": "11/18(수) 18:00까지",
+   "due_label": "D-2"
   }
  ],
  "texts": {
@@ -1081,8 +1095,9 @@ function renderTrack(m){const T=(D.tracker||[]).slice().sort((a,b)=>((a.event||a
  const now=new Date();now.setHours(0,0,0,0);
  order.forEach(stt=>{const rows=T.filter(r=>r.status===stt);if(!rows.length)return;html+=`<h3>${stt} (${rows.length})</h3>`;rows.forEach(r=>{const e=r.event?Math.round((new Date(r.event)-now)/864e5):null;const eimm=e!==null&&e>=0&&e<=7;
   html+=`<div class="card"><div class="row"><div class="rank">#${r.id}</div><div class="title"><a href="${r.url}" target="_blank" rel="noopener">${esc(r.title)}</a>
-  ${r.event?`<div class="meta"><span class="dday ${eimm?'imminent':''}">⏰ ${esc(r.event_label||'일정')} ${r.event} (${e>=0?'D-'+e:'지남'})</span></div>`:''}
-  <div class="meta">${esc(r.org)} · ${esc(r.category||'')} · 공고 마감 ${r.deadline||'미확인'}${r.folder?` · 폴더 <code>${esc(r.folder)}</code>`:''}</div>${r.memo?`<div class="meta">${esc(r.memo)}</div>`:''}</div></div></div>`;});});
+  ${r.event?`<div class="meta"><span class="dday ${eimm?'imminent':''}">⏰ ${esc(r.event_label||'일정')} · ${r.event_note?esc(r.event_d)+' · '+esc(r.event_note):r.event+' (지남)'}</span></div>`:''}
+  ${r.due_note?`<div class="meta"><span class="dday imminent">⏰ 지원 마감 · ${esc(r.due_label)} · ${esc(r.due_note)}</span></div>`:''}
+  <div class="meta">${esc(r.org)} · ${esc(r.category||'')} · 공고 마감 ${r.deadline?r.deadline+' '+(r.deadline_time||'(시각 미확인)'):'미확인'}${r.folder?` · 폴더 <code>${esc(r.folder)}</code>`:''}</div>${r.memo?`<div class="meta">${esc(r.memo)}</div>`:''}</div></div></div>`;});});
  m.innerHTML=T.length?html:html+'<div class="empty">아직 준비 중인 지원이 없습니다.</div>';}
 function copyText(id){const el=document.getElementById(id);navigator.clipboard&&navigator.clipboard.writeText(el.textContent).then(()=>{el.previousElementSibling.textContent='복사됨 ✓';setTimeout(()=>el.previousElementSibling.textContent='복사',1500);});}
 function renderTexts(m){const T=D.texts||{};const blocks=[['intro_480','자기소개 (프로필·지원서 공용)'],['plan_280','활동 계획'],['evaluator_record','평가위원·전문가 풀용 경력·실적'],['strengths','강점 3가지'],['lecture_topics','강연 주제 후보']];
