@@ -32,7 +32,7 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:6px}
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px}
 .empty{color:var(--muted);padding:20px;text-align:center}
 .small{font-size:13px;color:var(--muted)}
-</style><script>(function(){var BUILD="20261116210519";
+</style><script>(function(){var BUILD="20261117000945";
 function bar(txt){var el=document.getElementById('upbar');if(!el){el=document.createElement('div');el.id='upbar';el.style.cssText='font:12px sans-serif;color:#6b7280;padding:6px 16px;display:flex;gap:10px;align-items:center;max-width:1100px;margin:0 auto';document.body.insertBefore(el,document.body.firstChild);}
  el.innerHTML='<span>'+txt+'</span><button onclick="location.replace(location.pathname+\'?r=\'+Date.now())" style="padding:4px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;cursor:pointer">새로고침</button>';}
 function check(){fetch('version.json?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(v){
@@ -727,6 +727,19 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
  ],
  "pools": [
   {
+   "id": "kised_eval",
+   "name": "창업진흥원 창업지원사업 평가위원 후보단 (K-Startup 전 사업 공통)",
+   "group": "A",
+   "url": "https://pms.k-startup.go.kr/biz/screen/BMQ0107M01",
+   "eligible": "예 (자격기준 9번 '기술사·변리사·기술지도사… 전문가', 증빙은 변리사등록증)",
+   "priority": "상",
+   "update": "변동 시 (모집 열릴 때)",
+   "registered": false,
+   "why": "변리사 자격만으로 들어가는 가장 확실한 심사위원 풀(수당 시간당 10만원, 1일 최대 50만원, 등록 유효 2년). ★모집 중 — '신산업 분야 및 시장전문가 예비위원단 공개모집' 2026-11-05 10:00 ~ 2026-12-11(금) 18:00 (공고 https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=179698). 11/17에야 발견(스캐너가 K-Startup 첫 페이지만 봐서 놓쳤음 → 키워드 검색 추가)",
+   "needs": "변리사등록증, 3개월 이내 재직·경력증명서(또는 건강보험자격득실확인서), 학위증명서, 증명사진, 개인명의 통장사본, 경력기술서(공고 붙임 양식). 회원상세정보(경력·학력·자격증)는 2026-11-02 입력 완료",
+   "steps": "모집 기간에만 메뉴가 보임 — k-startup.go.kr 로그인 → 상단 '사업신청관리' → '예비위원전용' → '예비위원신청' → 약관 4건 동의 → 신청자정보(사진)·위원정보(계좌) 저장 → 자격기준 9번 선택 → 전문분야(산업기술분류·국가과학기술분류) → 경력기술서 첨부 → 접수. 2026 신산업분야 재모집은 8/31 조기마감, 창진원이 12/14까지 예비위원 재정비 중. 문의 1357(→4) / growth@kised.or.kr / 044-410-1905"
+  },
+  {
    "id": "iris",
    "name": "IRIS 범부처 평가위원 후보단 (KISTEP, 전 부처 R&D 공통)",
    "group": "A",
@@ -811,19 +824,6 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "why": "중소기업 현장클리닉·상담 전문위원 풀. 중소기업 대표를 직접 만나는 자리라 네트워크와 수당이 함께 생기고, 등록만 해 두면 수행기관이 매칭",
    "needs": "전문위원 회원가입 → 등록신청(자격증·경력) → 수행기관 서류 검토 후 승인",
    "steps": "smes.go.kr/bizlink → 전문위원 안내(partner.do) → 회원가입 → 등록신청 → 승인 후 상담·클리닉 배정"
-  },
-  {
-   "id": "kised_eval",
-   "name": "창업진흥원 창업지원사업 평가위원 후보단 (K-Startup 전 사업 공통)",
-   "group": "A",
-   "url": "https://pms.k-startup.go.kr/biz/screen/BMQ0107M01",
-   "eligible": "예 (자격기준 9번 '기술사·변리사·기술지도사… 전문가', 증빙은 변리사등록증)",
-   "priority": "중",
-   "update": "변동 시 (모집 열릴 때)",
-   "registered": false,
-   "why": "변리사 자격만으로 들어가는 가장 확실한 심사위원 풀(수당 시간당 10만원, 1일 최대 50만원, 등록 유효 2년). 2026-11-02 현재 모집이 닫혀 있어 대기 — 열리면 스캐너가 알림",
-   "needs": "변리사등록증, 3개월 이내 재직·경력증명서(또는 건강보험자격득실확인서), 학위증명서, 증명사진, 개인명의 통장사본, 경력기술서(공고 붙임 양식). 회원상세정보(경력·학력·자격증)는 2026-11-02 입력 완료",
-   "steps": "모집 기간에만 메뉴가 보임 — k-startup.go.kr 로그인 → 상단 '사업신청관리' → '예비위원전용' → '예비위원신청' → 약관 4건 동의 → 신청자정보(사진)·위원정보(계좌) 저장 → 자격기준 9번 선택 → 전문분야(산업기술분류·국가과학기술분류) → 경력기술서 첨부 → 접수. 2026 신산업분야 재모집은 8/31 조기마감, 창진원이 12/14까지 예비위원 재정비 중. 문의 1357(→4) / growth@kised.or.kr / 044-410-1905"
   },
   {
    "id": "pps",
@@ -964,7 +964,7 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "deadline_time": null,
    "event_time": null,
    "event_note": "11/30(월) · 시각 미확인 — 안내문 확인",
-   "event_d": "D-14"
+   "event_d": "D-13"
   },
   {
    "id": 2,
@@ -1032,7 +1032,26 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "deadline_time": "18:00",
    "event_time": null,
    "due_note": "11/18(수) 18:00까지",
-   "due_label": "D-2"
+   "due_label": "D-1"
+  },
+  {
+   "id": 6,
+   "title": "[창업진흥원] 신산업 분야 및 시장전문가 예비위원단 공개모집 (K-Startup 평가위원 풀)",
+   "org": "창업진흥원",
+   "category": "평가위원",
+   "url": "https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?schM=view&pbancSn=179698",
+   "deadline": "2026-12-11",
+   "deadline_time": "18:00",
+   "status": "준비중",
+   "folder": "",
+   "created": "2026-11-17",
+   "updated": "2026-11-17",
+   "memo": "자격기준 '기술사·변리사 등 전문가'로 신청. K-Startup 로그인 → 사업신청관리 → 예비위원전용 → 예비위원신청. 준비물: 증명사진, 개인명의 통장사본, 변리사등록증, 3개월 이내 재직증명서, 경력기술서(공고 붙임 양식)",
+   "event": null,
+   "event_time": null,
+   "event_label": "",
+   "due_note": "12/11(금) 18:00까지",
+   "due_label": "D-24"
   }
  ],
  "texts": {
