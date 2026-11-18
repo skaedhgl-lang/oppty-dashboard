@@ -32,7 +32,7 @@ details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:6px}
 .stats{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px}
 .empty{color:var(--muted);padding:20px;text-align:center}
 .small{font-size:13px;color:var(--muted)}
-</style><script>(function(){var BUILD="20261118212015";
+</style><script>(function(){var BUILD="20261118213410";
 function bar(txt){var el=document.getElementById('upbar');if(!el){el=document.createElement('div');el.id='upbar';el.style.cssText='font:12px sans-serif;color:#6b7280;padding:6px 16px;display:flex;gap:10px;align-items:center;max-width:1100px;margin:0 auto';document.body.insertBefore(el,document.body.firstChild);}
  el.innerHTML='<span>'+txt+'</span><button onclick="location.replace(location.pathname+\'?r=\'+Date.now())" style="padding:4px 10px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;cursor:pointer">새로고침</button>';}
 function check(){fetch('version.json?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(v){
@@ -802,6 +802,7 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
   {
    "id": "kpaa_lecturer",
    "name": "대한변리사회 지식재산 전문강사 인증제",
+   "memo": "보류 — 변리사 등록·변리사회 가입이 끝난 뒤 (2026-11-18 본인 확인, 등록에 시간이 걸림)",
    "group": "C",
    "url": "https://www.kpaa.or.kr/kpaa/teacherPool/teacherPoolMainList.do",
    "eligible": "예 (정강사 — 변리사 등록·회원·개업상태·의무연수 이행 + 강의실적 또는 온라인연수원 IP강사교육 이수)",
@@ -811,19 +812,6 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "why": "변리사회가 외부 강연 요청을 배분하는 공식 창구. '강연하는 변리사'라는 브랜딩의 출발점",
    "needs": "온라인 신청지원서, 학력증명서 1부, 강의 이력 자료(발표자료·강의계획서·논문초록·샘플영상 등). 외부 강의실적이 없으면 온라인연수원(edukpaa.or.kr) 'IP 강사 과정' 먼저 수강",
    "steps": "kpaa.or.kr '교육·연수' → '지식재산 전문강사 지원' → 하단 '신청 바로가기'(로그인) → 온라인 신청. 제3기 1차 접수 2026-02-01~2027-01-31. 첨부 '지식재산 전문강사 시행 안내문.hwp'"
-  },
-  {
-   "id": "bizlink_expert",
-   "name": "중기부 비즈니스지원단 전문위원 (특허 분야)",
-   "group": "D",
-   "url": "https://www.smes.go.kr/bizlink/support/partner.do",
-   "eligible": "예 (12개 분야 중 '특허' — 변리사 해당, 최대 3개 분야)",
-   "priority": "상",
-   "update": "연 1회",
-   "registered": false,
-   "why": "중소기업 현장클리닉·상담 전문위원 풀. 중소기업 대표를 직접 만나는 자리라 네트워크와 수당이 함께 생기고, 등록만 해 두면 수행기관이 매칭",
-   "needs": "전문위원 회원가입 → 등록신청(자격증·경력) → 수행기관 서류 검토 후 승인",
-   "steps": "smes.go.kr/bizlink → 전문위원 안내(partner.do) → 회원가입 → 등록신청 → 승인 후 상담·클리닉 배정"
   },
   {
    "id": "pps",
@@ -866,6 +854,7 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
   {
    "id": "kpaa_profile",
    "name": "대한변리사회 회원정보·전문분야 공개 (외부기관 추천 기초자료)",
+   "memo": "보류 — 변리사회 가입이 끝난 뒤",
    "group": "B",
    "url": "https://reg.kpaa.or.kr/kpaa/ptatnInfoModify.do",
    "eligible": "예 (회원)",
@@ -888,6 +877,20 @@ window.addEventListener('load',check);document.addEventListener('visibilitychang
    "why": "중소기업 기술보호 자문은 변리사 이름이 공식 문서에 남는 자리. 상시 등록은 아니고 모집 공고가 뜰 때 신청 — 회원가입만 미리 해 두면 됨",
    "needs": "일반회원 가입(휴대폰 문자 인증 또는 아이핀 — 공동인증서 아님), 공고 뜨면 이력서·자격증·경력증명",
    "steps": "ultari.go.kr '회원가입' → '일반회원 가입' → 로그인 → '마이페이지' → '사업신청' → '전문가 모집'(공고 있을 때). 공고 확인은 '정보마당' → '전문가 모집공고'. 2026-11-02 현재 모집 없음"
+  },
+  {
+   "id": "bizlink_expert",
+   "name": "중기부 비즈니스지원단 전문위원 (특허 분야)",
+   "memo": "보류 — 변리사 등록증이 필요. 변리사 등록·변리사회 가입이 끝난 뒤",
+   "group": "D",
+   "url": "https://www.smes.go.kr/bizlink/support/partner.do",
+   "eligible": "조건부 (특허 분야 자격은 '변리사 등록증 사본' — 자격증이 아니라 등록증. 2026-11-18 등록안내 페이지 확인)",
+   "priority": "중",
+   "update": "연 1회",
+   "registered": false,
+   "why": "중소기업 현장클리닉·상담 전문위원 풀. 중소기업 대표를 직접 만나는 자리라 네트워크와 수당이 함께 생기고, 등록만 해 두면 수행기관이 매칭. 다만 클리닉위원은 소속기관 서류가 필요해 사무소 협조 없이는 못 함",
+   "needs": "변리사 등록증 사본(필수). 클리닉위원까지 하려면 소속기관의 사업자등록증(업태에 컨설팅·자문 기재)·소속기관 통장사본(직원은 본인 통장 불가)·4대보험 사업장 가입자 명부(3개월 이내). 상담위원으로만 활동하면 소속기관 서류는 불필요",
+   "steps": "smes.go.kr/bizlink → 전문위원 안내(partner.do) → 회원가입 → 등록신청 → 승인 후 상담·클리닉 배정"
   },
   {
    "id": "seoul",
